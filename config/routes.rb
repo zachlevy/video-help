@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :responses
+
   resources :videos
 
   devise_for :users
@@ -10,6 +12,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'pages#show', :id => '1'
   resources 'pages'
+
+  get '/responses/new/:video_id', to: 'responses#new'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

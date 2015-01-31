@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uuid:</strong>
+  <%= @response.uuid %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @response.user %>
+</p>
+
+<p>
+  <strong>Video:</strong>
+  <%= @response.video %>
+</p>
+
+<%= link_to 'Edit', edit_response_path(@response) %> |
+<%= link_to 'Back', responses_path %>
