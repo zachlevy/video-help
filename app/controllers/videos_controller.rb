@@ -42,11 +42,7 @@ class VideosController < ApplicationController
   end
 
   def timeline
-    if user_signed_in?
-      @video = Video.find(params[:video_id])
-    else
-      redirect_to root_url
-    end
+    @video = Video.find(params[:video_id])
   end
 
   # PATCH/PUT /videos/1

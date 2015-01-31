@@ -1,5 +1,6 @@
 class ResponsesController < ApplicationController
   before_action :set_response, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, :except => [:show]
 
   # GET /responses
   # GET /responses.json
@@ -14,6 +15,8 @@ class ResponsesController < ApplicationController
 
   # GET /responses/new
   def new
+    puts "=====" + user_signed_in?.to_s + "====="
+    redirect_to root_url  user_signed_in?
     @response = Response.new(
       user_id: current_user.id,
       video_id: params[:video_id]
