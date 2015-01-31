@@ -14,7 +14,9 @@ class VideosController < ApplicationController
 
   # GET /videos/new
   def new
+    @prompts = Prompt.all.order(weight: :desc)
     @video = Video.new
+    @video.user_id = current_user.id unless !user_signed_in?
   end
 
   # GET /videos/1/edit
@@ -35,6 +37,10 @@ class VideosController < ApplicationController
         format.json { render json: @video.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def timeline
+    @videos.all
   end
 
   # PATCH/PUT /videos/1
