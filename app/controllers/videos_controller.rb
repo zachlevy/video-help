@@ -10,6 +10,8 @@ class VideosController < ApplicationController
   # GET /videos/1
   # GET /videos/1.json
   def show
+    @videos = @video.responses
+    @videos.unshift @video
   end
 
   # GET /videos/new
@@ -40,7 +42,11 @@ class VideosController < ApplicationController
   end
 
   def timeline
-    @videos.all
+    if user_signed_in?
+      @video = Video.find(params[:video_id])
+    else
+      redirect_to root_url
+    end
   end
 
   # PATCH/PUT /videos/1

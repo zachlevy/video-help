@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+
+<%= @video.id %> | 
+<video id='submission-player' class='video-player' data-uuid='<%= @video.uuid %>'></video>
+<ul>
+<% @video.responses.each do |response| %>
+  <video id='response-player-'<%= response.id %> class='video-player' data-uuid='<%= response.uuid %>'></video>
+<% end %>
+</ul>
+
+<%= link_to 'Back', videos_path %>

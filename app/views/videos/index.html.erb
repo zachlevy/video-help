@@ -1,5 +1,4 @@
-<h1>Listing videos</h1>
-
+<h2>Videos With Responses</h2>
 <table>
   <thead>
     <tr>
@@ -11,16 +10,46 @@
   </thead>
 
   <tbody>
-    <% @videos.each do |video| %>
-      <tr>
-        <td><%= video.user %></td>
-        <td><%= video.uuid %></td>
-        <td><%= link_to 'Show', video %></td>
-        <td><%= link_to 'Edit', edit_video_path(video) %></td>
-        <td><%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+  <% @videos.each do |video| %>
+    <% if video.responses.any? %>
+    <tr>
+      <td><%= video.user %></td>
+      <td><%= video.uuid %></td>
+      <td><%= link_to 'Show', video %></td>
+      <td><%= link_to 'Edit', edit_video_path(video) %></td>
+      <td><%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
     <% end %>
+  <% end %>
   </tbody>
+</table>
+
+
+<h2>Videos Without Responses</h2>
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Thumb</th>
+      <th>Url</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+<% @videos.each do |video| %>
+    <% if !video.responses.any? %>
+    <tr>
+      <td><%= video.user %></td>
+      <td><%= video.uuid %></td>
+      <td><%= link_to 'Show', video %></td>
+      <td><%= link_to 'Timeline', '/videos/' + video.id.to_s + '/timeline'%></td>
+      <td><%= link_to 'Edit', edit_video_path(video) %></td>
+      <td><%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+  <% end %>
+</tbody>
 </table>
 
 <br>

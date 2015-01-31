@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   root 'pages#show', :id => '1'
   resources 'pages'
 
+  get '/videos/:video_id/timeline', to: 'videos#timeline'
   get '/responses/new/:video_id', to: 'responses#new'
 
   # Example of regular route:
