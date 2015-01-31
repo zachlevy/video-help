@@ -7,3 +7,12 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 home = Page.create name: 'home', content: '<h1>Home</h1>'
+
+prompts = Prompt.create [
+  {question: 'How are you feeling?', weight: 5},
+  {question: 'Do you feel bored?', weight: 10},
+  {question: 'How is school?', weight: 15},
+  {question: 'What is your favourite color?', weight: 20},
+  {question: 'Are you having nightmares?', weight: 25},
+  {question: 'Are your parents are guardians home after school?', weight: 30},
+]
