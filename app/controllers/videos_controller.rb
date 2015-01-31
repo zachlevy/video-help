@@ -25,7 +25,7 @@ class VideosController < ApplicationController
   # POST /videos.json
   def create
     @video = Video.new(video_params)
-
+    @video.uuid = params[:videohelpsubmission][:video_uuid]
     respond_to do |format|
       if @video.save
         format.html { redirect_to @video, notice: 'Video was successfully created.' }
@@ -69,6 +69,6 @@ class VideosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def video_params
-      params.require(:video).permit(:user_id, :thumb, :url)
+      params.require(:video).permit(:user_id, :uuid, :videohelpsubmission => [])
     end
 end

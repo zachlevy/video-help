@@ -26,3 +26,18 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+
+==CameraTag Submits a Video Like this
+<code>
+"videohelpsubmission"=>{
+  "video_uuid"=>"v-01f4e870-8ba4-0132-11a2-22000a8c0328",
+  "qvga"=>{
+    "video"=>"//cameratag.com/videos/v-01f4e870-8ba4-0132-11a2-22000a8c0328/qvga/mp4.mp4",
+    "mp4"=>"//cameratag.com/videos/v-01f4e870-8ba4-0132-11a2-22000a8c0328/qvga/mp4.mp4",
+    "webm"=>"",
+    "thumb"=>"//cameratag.com/videos/v-01f4e870-8ba4-0132-11a2-22000a8c0328/qvga/thumb.png",
+    "small_thumb"=>"//cameratag.com/videos/v-01f4e870-8ba4-0132-11a2-22000a8c0328/qvga/small_thumb.png"
+  }
+}
+</code>
