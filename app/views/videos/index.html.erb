@@ -1,57 +1,32 @@
-<h2>Videos With Responses</h2>
-<table>
+<h2>Video Submissions</h2>
+<table class="table table-striped table-responsive timelines">
   <thead>
     <tr>
-      <th>User</th>
       <th>Thumb</th>
-      <th>Url</th>
+      <th>User</th>
+      <th>Councillor</th>
+      <th>Timeline</th>
+      <th>Submitted</th>
+      <th>Actions</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
   <% @videos.each do |video| %>
-    <% if video.responses.any? %>
     <tr>
-      <td><%= video.user %></td>
-      <td><%= video.uuid %></td>
+      <td><img class="img-responsive" src="//cameratag.com/videos/<%= video.uuid %>/qvga/small_thumb.png"/></td>
+      <td><%= video.user ? video.user.email : "" %></td>
+      <td><%= video.responses.any? ? video.responses.first.user.email : "" %></td>
+      <% if video.responses.any? %>
+        <td><%= link_to 'View Timeline', '/videos/' + video.id.to_s + '/timeline'%></td>
+      <% else %>
+        <td><%= link_to 'Respond', '/responses/new/' + video.id.to_s %></td>
+      <% end %>
+      <td><%= video.created_at.to_formatted_s(:long_ordinal) %></td>
       <td><%= link_to 'Show', video %></td>
-      <td><%= link_to 'Timeline', '/videos/' + video.id.to_s + '/timeline'%></td>
-      <td><%= link_to 'Edit', edit_video_path(video) %></td>
       <td><%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
-    <% end %>
-  <% end %>
-  </tbody>
-</table>
-
-
-<h2>Videos Without Responses</h2>
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Thumb</th>
-      <th>Url</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-<% @videos.each do |video| %>
-    <% if !video.responses.any? %>
-    <tr>
-      <td><%= video.user %></td>
-      <td><%= video.uuid %></td>
-      <td><%= link_to 'Show', video %></td>
-      <td><%= link_to 'Edit', edit_video_path(video) %></td>
-      <td><%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-    <% end %>
   <% end %>
 </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Video', new_video_path %>

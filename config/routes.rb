@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   resources 'pages'
 
   get '/videos/:video_id/timeline', to: 'videos#timeline'
+  get '/videos/timeline/:token', to: 'videos#timeline'
+
   get '/responses/new/:video_id', to: 'responses#new'
 
   # Example of regular route:

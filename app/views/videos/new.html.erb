@@ -1,11 +1,36 @@
-<h1>New video</h1>
-
-<ul>
-  <% @prompts.each_with_index do |prompt,index| %>
-    <li><%= prompt.question %></li>
-  <% end %>
-</ul>
-
+<div class="row">
+  <h1 class="text-center">New video</h1>
+  <div class="col-md-offset-2 col-md-8">
+    <div class="carousel slide" data-ride="carousel" id="quote-carousel" data-interval="false">
+      <!-- Bottom Carousel Indicators -->
+      <ol class="carousel-indicators">
+        <% @prompts.each_with_index do |prompt,index| %>
+          <li data-target="#quote-carousel" data-slide-to="<%= index %>" class="<%= " active" unless index != 0 %>"></li>
+        <% end %>
+      </ol>
+      <!-- Carousel Slides / Quotes -->
+      <div class="carousel-inner">
+        <% @prompts.each_with_index do |prompt,index| %>
+          <!-- Quote 1 -->
+          <div class="item<%= " active" unless index != 0 %>">
+            <blockquote>
+              <div class="row">
+                <div class="col-sm-3 text-center">
+                  <img class="img-circle" src="http://lorempixel.com/100/100/people" style="width: 100px;height:100px;">
+                </div>
+                <div class="col-sm-9">
+                  <p><%= prompt.question %></p>
+                  <small>Tuti</small>
+                </div>
+              </div>
+            </blockquote>
+          </div>
+        <% end %>        
+      </div>
+      <!-- Carousel Buttons Next/Prev -->
+      <a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
+      <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>
+    </div>                          
+  </div>
+</div>
 <%= render 'form' %>
-
-<%= link_to 'Back', videos_path %>

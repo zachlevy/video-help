@@ -1,10 +1,11 @@
 class VideosController < ApplicationController
+  require 'securerandom'
   before_action :set_video, only: [:show, :edit, :update, :destroy]
 
   # GET /videos
   # GET /videos.json
   def index
-    @videos = Video.all
+    @videos = Video.all.order(created_at: :desc)
   end
 
   # GET /videos/1
@@ -30,6 +31,7 @@ class VideosController < ApplicationController
   def create
     @video = Video.new(video_params)
     @video.uuid = params[:videohelpsubmission][:video_uuid]
+    @video.token = SecureRandom.hex
     respond_to do |format|
       if @video.save
         format.html { redirect_to @video, notice: 'Video was successfully created.' }
@@ -42,7 +44,12 @@ class VideosController < ApplicationController
   end
 
   def timeline
-    @video = Video.find(params[:video_id])
+    if params[:video_id]
+      @video = Video.find(params[:video_id])
+    elsif params[:token]
+      @video = Video.where(token: params[:token]).first
+    end
+    puts @video.inspect
   end
 
   # PATCH/PUT /videos/1
