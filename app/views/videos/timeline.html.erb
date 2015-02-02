@@ -21,8 +21,13 @@
           <h3 class="panel-title">Response Video Submitted <%= response.created_at.to_formatted_s(:long_ordinal) %> by <%= response.user ? response.user.email : "Unknown Councillor" %></h3>
         </div>
         <div class="panel-body">
-          <video id='response-player-'<%= response.id %> class='video-player' data-uuid='<%= response.uuid %>'></video>
+          <video id='response-player-<%= response.id %>' class='video-player' data-uuid='<%= response.uuid %>'></video>
         </div>
+        <% if response.written != nil and response.written != "" %>
+        <div class="panel-body">
+          <p><%= simple_format response.written %></p>
+        </div>
+        <% end %>
       </div>
     </div>
   </div>

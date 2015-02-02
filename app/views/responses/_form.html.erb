@@ -13,11 +13,12 @@
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <camera id='videohelpresponse' class='video-recorder' data-app-id='a-6c6e5020-8b9f-0132-119e-22000a8c0328'></camera>
+      <%= f.label :written, "Write in a response to complement your video" %>
+      <%= f.text_area :written, :class=> "form-control", :rows => "6" %>
       <%= f.hidden_field :uuid %>
       <%= f.hidden_field :user_id %>
       <%= f.hidden_field :video_id %>
-
-      <div class="actions">
+      <div class="actions pad-top-lg">
         <%= f.submit "Submit Video", :class => "btn btn-lg btn-primary btn-block" %>
       </div>
     </div>
