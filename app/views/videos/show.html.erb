@@ -1,20 +1,13 @@
 <p id="notice"><%= notice %></p>
-
-<video id='submission-player' class='video-player' data-uuid='<%= @video.uuid %>'></video>
-
-<p>
-  <strong>User:</strong>
-  <%= @video.user %>
-</p>
-
-<p>
-  <strong>Uuid:</strong>
-  <%= @video.uuid %>
-</p>
-
-<p>
-  <%= link_to 'Response', '/responses/new/' + @video.id.to_s %>
-</p>
-
-<%= link_to 'Edit', edit_video_path(@video) %> |
-<%= link_to 'Back', videos_path %>
+<div class="row end-submission">
+  <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
+    <h2>Thanks for submitting us your video.</h4>
+      <hr />
+    <p> We'll send you a response from a professional councillor within 48 hours. You can check back at this link to see your councillor's response.</p>
+  </div>
+</div>
+<div class="row end-submission-link">
+  <div class="col-xs-12">
+    <div class="well well-lg text-center"><h2><%= 'http://' + request.host.to_s + '/videos/timeline/' + @video.token %></h2></div>
+  </div>
+</div>

@@ -10,13 +10,16 @@
       </ul>
     </div>
   <% end %>
-  
-  <camera id='videohelpresponse' data-app-id='a-6c6e5020-8b9f-0132-119e-22000a8c0328'></camera>
-  <%= f.hidden_field :uuid %>
-  <%= f.hidden_field :user_id %>
-  <%= f.hidden_field :video_id %>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <camera id='videohelpresponse' class='video-recorder' data-app-id='a-6c6e5020-8b9f-0132-119e-22000a8c0328'></camera>
+      <%= f.hidden_field :uuid %>
+      <%= f.hidden_field :user_id %>
+      <%= f.hidden_field :video_id %>
 
-  <div class="actions">
-    <%= f.submit %>
+      <div class="actions">
+        <%= f.submit "Submit Video", :class => "btn btn-lg btn-primary btn-block" %>
+      </div>
+    </div>
   </div>
 <% end %>
